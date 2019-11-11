@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Django</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/album.css' %}">    
+</head>
+<body>
+<header>  
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container d-flex justify-content-between">
+      <a href="{% url 'index' %}" class="navbar-brand d-flex align-items-center">        
+        <strong>Superheroes</strong>
+      </a>      
+    </div>
+  </div>
+</header>
+
+<main role="main">
+
+  <section class="title-page text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">API de Superhéroes</h1>
+    </div>
+  </section>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card mb-12 shadow-sm">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img class="img-sh" src="{{ superheroe.image.url }}" alt="{{ superheroe.name }}" />
+                    </div>                    
+                    <div class="col-md-8">
+                        <div class="row">
+                            <h4 class="card-text">{{ superheroe.name }}</h4>
+                        </div>
+                        <br></br>
+                        <div class="row">
+                            <col class="col-md-12">
+                                <div>
+                                    {% for key, value in superheroe.biography.items %}
+                                        <p><strong>{{ key }}: </strong><span>{{ value }}</span></p>
+                                    {% endfor %}                                    
+                                </div>
+                                <div>
+                                    {% for key, value in superheroe.powerstats.items %}
+                                        <p><strong>{{ key }}: </strong><span>{{ value }}</span></p>
+                                    {% endfor %}                                    
+                                </div>
+                            </col>                            
+                        </div>                        
+                    </div>                    
+                </div>                                      
+            </div>
+          </div>
+        </div>                     
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="text-muted">
+  <div class="container">
+    <p class="float-right">
+      <a href="#">Back to top</a>
+    </p>
+    <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+    <p>New to Bootstrap? <a href="{{ site.url }}/">Visit the homepage</a> or read our <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/introduction/">getting started guide</a>.</p>
+  </div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>
